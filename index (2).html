@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Us</title>
+    <style>
+        /* General styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: white;
+            overflow: hidden;
+        }
+        /* Smooth transitions */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeIn 1s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        .navbar li {
+            display: inline;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2em;
+            padding: 8px 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .navbar a img {
+            width: 24px;
+            height: 24px;
+            filter: invert(1);
+        }
+        .navbar a:hover, .navbar a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Welcome screen */
+        .welcome-screen {
+            height: 100vh;
+            background: linear-gradient(to bottom right, #000, #333);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .welcome-screen h1 {
+            font-size: 3em;
+            letter-spacing: 2px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Main content */
+        .main-content {
+            display: none;
+            padding: 100px 20px 20px;
+            text-align: center;
+            animation: fadeInContent 1s ease forwards;
+        }
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .circle-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+        .label {
+            margin-top: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .heart {
+            font-size: 2.5em;
+            color: #e63946;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* Time content */
+        .time-content {
+            display: none;
+            text-align: center;
+            padding: 100px 20px 20px;
+        }
+        .time-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .time-content p {
+            font-size: 1.5em;
+            color: #d1d1d1;
+        }
+
+        /* Snow effect */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            opacity: 0.7;
+            font-size: 1em;
+            pointer-events: none;
+            animation: fall 10s linear infinite, sway 3s ease-in-out infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        @keyframes sway {
+            50% {
+                transform: translateX(20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <ul>
+            <li>
+                <a href="#" class="active" onclick="showTab('main-content')">
+                    <img src="https://img.icons8.com/?size=100&id=86527&format=png&color=000000" alt="Home Icon">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="showTab('time-content')">
+                    <img src="https://img.icons8.com/?size=100&id=19100&format=png&color=000000" alt="Time Icon">
+                    Time
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Welcome Screen -->
+    <div class="welcome-screen" onclick="enterSite()">
+        <h1 class="fade-in">Click to Enter</h1>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <div class="profile-container">
+            <div>
+                <img src="https://i.pinimg.com/736x/fe/d9/63/fed963f97d4739abf1eb84a885b340d7.jpg" alt="Armani" class="circle-image">
+                <div class="label">Armani</div>
+            </div>
+            <div class="heart">❤️</div>
+            <div>
+                <img src="https://i.pinimg.com/736x/3b/f9/e1/3bf9e17be2d8bd6f8a8f3bfaddf76ba3.jpg" alt="Bane" class="circle-image">
+                <div class="label">Bane</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Time Content -->
+    <div class="time-content" id="time-content">
+        <h2>⬇</h2>
+        <p>11/16/2024</p>
+        <p><span id="days-together"></span> </p>
+    </div>
+
+    <!-- Snowflakes -->
+    <script>
+        // Welcome screen transition
+        function enterSite() {
+            document.querySelector('.welcome-screen').style.display = 'none';
+            document.querySelector('.main-content').style.display = 'block';
+            startSnowfall();
+        }
+
+        // Navigation tabs
+        function showTab(tabId) {
+            document.querySelectorAll('.main-content, .time-content').forEach(tab => {
+                tab.style.display = 'none';
+            });
+            document.getElementById(tabId).style.display = 'block';
+
+            // Highlight active tab
+            document.querySelectorAll('.navbar a').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
+        }
+
+        // Snowfall effect
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            snowflake.innerHTML = '❄';
+            document.body.appendChild(snowflake);
+            setTimeout(() => snowflake.remove(), 10000);
+        }
+        function startSnowfall() {
+            setInterval(createSnowflake, 200);
+        }
+
+        // Calculate days together
+        function calculateDaysTogether() {
+            const startDate = new Date('2024-11-16');
+            const today = new Date();
+            const diffTime = Math.abs(today - startDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('days-together').textContent = diffDays;
+        }
+        calculateDaysTogether();
+    </script>
+</body>
+</html>
