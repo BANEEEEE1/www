@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Us</title>
     <style>
-        /* General styles */
         body, html {
             margin: 0;
             padding: 0;
@@ -16,7 +15,6 @@
             color: white;
             overflow: hidden;
         }
-        /* Smooth transitions */
         .fade-in {
             opacity: 0;
             transform: translateY(10px);
@@ -29,7 +27,6 @@
             }
         }
 
-        /* Navbar */
         .navbar {
             position: fixed;
             top: 0;
@@ -70,7 +67,6 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        /* Welcome screen */
         .welcome-screen {
             height: 100vh;
             background: linear-gradient(to bottom right, #000, #333);
@@ -95,7 +91,6 @@
             }
         }
 
-        /* Main content */
         .main-content {
             display: none;
             padding: 100px 20px 20px;
@@ -135,7 +130,6 @@
             }
         }
 
-        /* Time content */
         .time-content {
             display: none;
             text-align: center;
@@ -150,7 +144,6 @@
             color: #d1d1d1;
         }
 
-        /* Snow effect */
         .snowflake {
             position: absolute;
             top: -10px;
@@ -173,7 +166,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <div class="navbar">
         <ul>
             <li>
@@ -191,12 +183,10 @@
         </ul>
     </div>
 
-    <!-- Welcome Screen -->
     <div class="welcome-screen" onclick="enterSite()">
         <h1 class="fade-in">Click to Enter</h1>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content" id="main-content">
         <div class="profile-container">
             <div>
@@ -211,37 +201,31 @@
         </div>
     </div>
 
-    <!-- Time Content -->
     <div class="time-content" id="time-content">
         <h2>⬇</h2>
         <p>11/16/2024</p>
         <p><span id="days-together"></span> </p>
     </div>
 
-    <!-- Snowflakes -->
     <script>
-        // Welcome screen transition
         function enterSite() {
             document.querySelector('.welcome-screen').style.display = 'none';
             document.querySelector('.main-content').style.display = 'block';
             startSnowfall();
         }
 
-        // Navigation tabs
         function showTab(tabId) {
             document.querySelectorAll('.main-content, .time-content').forEach(tab => {
                 tab.style.display = 'none';
             });
             document.getElementById(tabId).style.display = 'block';
 
-            // Highlight active tab
             document.querySelectorAll('.navbar a').forEach(tab => {
                 tab.classList.remove('active');
             });
             document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
         }
 
-        // Snowfall effect
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
@@ -255,7 +239,6 @@
             setInterval(createSnowflake, 200);
         }
 
-        // Calculate days together
         function calculateDaysTogether() {
             const startDate = new Date('2024-11-16');
             const today = new Date();
